@@ -21,3 +21,4 @@
 go.work
 playground/composer.phar
 playground/vendor
+.idea
