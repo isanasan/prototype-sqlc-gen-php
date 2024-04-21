@@ -13,5 +13,10 @@
             "email": "yfcgpsebp@gmail.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "config": {
+        "platform": {
+            "php": "8.3"
+        }
+    }
 }
