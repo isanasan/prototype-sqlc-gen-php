@@ -1,0 +1,17 @@
+{
+    "name": "isanasan/sqlc-gen-php-playground",
+    "type": "project",
+    "license": "mit",
+    "autoload": {
+        "psr-4": {
+            "Isanasan\\SqlcGenPhpPlayground\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "isanasan",
+            "email": "yfcgpsebp@gmail.com"
+        }
+    ],
+    "require": {}
+}
