@@ -13,10 +13,12 @@
             "email": "yfcgpsebp@gmail.com"
         }
     ],
-    "require": {},
     "config": {
         "platform": {
             "php": "8.3"
         }
+    },
+    "require": {
+        "ext-pdo": "*"
     }
 }
