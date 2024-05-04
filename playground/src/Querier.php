@@ -17,13 +17,13 @@ class Querier
     {
     }
 
-    public function getUser(int $id): User
+    public function getUser(int $id): ?User
     {
         $stmt = $this->pdo->prepare(self::getUser);
 
         $stmt->bindValue(1, $id, PDO::PARAM_INT);
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        return new User(...$row);
+        return $row !== false ? new User(...$row) : null;
     }
 }
