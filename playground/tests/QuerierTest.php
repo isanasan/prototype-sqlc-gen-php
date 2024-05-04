@@ -2,6 +2,7 @@
 
 
 use Isanasan\SqlcGenPhpPlayground\Querier;
+use Isanasan\SqlcGenPhpPlayground\User;
 use PHPUnit\Framework\TestCase;
 
 class QuerierTest extends TestCase
@@ -19,13 +20,13 @@ class QuerierTest extends TestCase
 
         $querier = new Querier($pdo);
 
-        $this->assertSame(
-            [
+        $this->assertEquals(
+            new User(...[
                 "id" => 1,
                 "name" => "hoge",
                 "email" => "test@example.com",
                 "age" => 20
-            ],
+            ]),
             $querier->getUser(1)
         );
     }

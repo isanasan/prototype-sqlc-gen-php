@@ -22,6 +22,7 @@ class Querier
 
         $stmt->bindValue(1, $id, PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return new User(...$row);
     }
 }
