@@ -1,0 +1,9 @@
+<phpunit
+        colors="true"
+        bootstrap="../vendor/autoload.php"
+        displayDetailsOnTestsThatTriggerDeprecations="true">
+    <testsuites>
+        <testsuite name="playground">
+        </testsuite>
+    </testsuites>
+</phpunit>
