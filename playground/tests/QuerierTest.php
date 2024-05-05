@@ -24,14 +24,34 @@ class QuerierTest extends TestCase
         $this->querier = new Querier($pdo);
     }
 
+    public function testCreateUser()
+    {
+        $got = $this->querier->createUser([
+            "id" => 1,
+            "name" => "test create user",
+            "email" => "test_create@example.com",
+            "age" => 30
+        ]);
+
+        $this->assertEquals(
+            new User(...[
+                "id" => 1,
+                "name" => "test create user",
+                "email" => "test_create@example.com",
+                "age" => 30
+            ]),
+            $got
+        );
+    }
+
     public function testGetUser()
     {
         $this->assertEquals(
             new User(...[
                 "id" => 1,
-                "name" => "hoge",
-                "email" => "test@example.com",
-                "age" => 20
+                "name" => "test create user",
+                "email" => "test_create@example.com",
+                "age" => 30
             ]),
             $this->querier->getUser(1)
         );
