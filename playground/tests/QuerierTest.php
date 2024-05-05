@@ -61,4 +61,18 @@ class QuerierTest extends TestCase
     {
         $this->assertNull($this->querier->getUser(2));
     }
+
+    public static function tearDownAfterClass(): void
+    {
+        $dsn = 'mysql:host=127.0.0.1;dbname=test;charset=utf8mb4';
+        $username = 'root';
+        $password = null;
+        $options = [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_EMULATE_PREPARES => false,
+        ];
+        $pdo = new PDO($dsn, $username, $password, $options);
+
+        $pdo->exec('TRUNCATE users');
+    }
 }
