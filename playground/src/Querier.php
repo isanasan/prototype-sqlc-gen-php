@@ -34,18 +34,29 @@ class Querier
             ?, ?, ?
         )';
 
-    public function createUser(array $data): ?User
+    public function createUser(CreateUserParam $arg): ?User
     {
         $stmt = $this->pdo->prepare(self::createUser);
 
-        $stmt->bindValue(1, $data['name'], PDO::PARAM_STR);
-        $stmt->bindValue(2, $data['email'], PDO::PARAM_STR);
-        $stmt->bindValue(3, $data['age'], PDO::PARAM_INT);
+        $stmt->bindValue(1, $arg->name, PDO::PARAM_STR);
+        $stmt->bindValue(2, $arg->email, PDO::PARAM_STR);
+        $stmt->bindValue(3, $arg->age, PDO::PARAM_INT);
 
-        if($stmt->execute()) {
+        if ($stmt->execute()) {
             $lastInsertId = $this->pdo->lastInsertId();
             return $this->getUser($lastInsertId); // fetch user with new id
         }
         return null; // null if insert operation fails
+    }
+}
+
+readonly class CreateUserParam
+{
+    function __construct(
+        public string $name,
+        public string $email,
+        public int    $age,
+    )
+    {
     }
 }

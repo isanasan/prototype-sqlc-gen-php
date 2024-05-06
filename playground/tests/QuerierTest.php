@@ -1,5 +1,6 @@
 <?php
 
+use Isanasan\SqlcGenPhpPlayground\CreateUserParam;
 use Isanasan\SqlcGenPhpPlayground\Querier;
 use Isanasan\SqlcGenPhpPlayground\User;
 use PHPUnit\Framework\TestCase;
@@ -26,12 +27,12 @@ class QuerierTest extends TestCase
 
     public function testCreateUser()
     {
-        $got = $this->querier->createUser([
-            "id" => 1,
-            "name" => "test create user",
-            "email" => "test_create@example.com",
-            "age" => 30
-        ]);
+        $userParam = new CreateUserParam(
+            "test create user",
+            "test_create@example.com",
+            30
+        );
+        $got = $this->querier->createUser($userParam);
 
         $this->assertEquals(
             new User(...[
