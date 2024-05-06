@@ -1,6 +1,6 @@
 <?php
 
-namespace Isanasan\SqlcGenPhpPlayground;
+namespace Isanasan\SqlcGenPhpPlayground\Users;
 
 class User
 {

@@ -1,9 +1,12 @@
 <?php
 
-use Isanasan\SqlcGenPhpPlayground\CreateUserParam;
-use Isanasan\SqlcGenPhpPlayground\Querier;
-use Isanasan\SqlcGenPhpPlayground\updateUserAges;
-use Isanasan\SqlcGenPhpPlayground\User;
+namespace Users;
+
+use Isanasan\SqlcGenPhpPlayground\Users\CreateUserParam;
+use Isanasan\SqlcGenPhpPlayground\Users\Querier;
+use Isanasan\SqlcGenPhpPlayground\Users\updateUserAges;
+use Isanasan\SqlcGenPhpPlayground\Users\User;
+use PDO;
 use PHPUnit\Framework\TestCase;
 
 class QuerierTest extends TestCase
@@ -77,6 +80,7 @@ class QuerierTest extends TestCase
 
         $pdo->exec('TRUNCATE users');
     }
+
     public function testUpdateUserAgesSuccess()
     {
         $userParam = new CreateUserParam(
