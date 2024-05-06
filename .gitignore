@@ -19,8 +19,7 @@
 
 # Go workspace file
 go.work
-playground/composer.phar
-playground/vendor
+composer.phar
 .idea
 vendor
-playground/tests/.phpunit.result.cache
+.phpunit.result.cache
