@@ -48,6 +48,23 @@ class Querier
         }
         return null; // null if insert operation fails
     }
+
+    const updateUserAges = '-- name: UpdateUserAges :exec
+        UPDATE users
+            SET age = ?
+        WHERE
+            id = ?
+        ';
+
+    public function updateUserAges(updateUserAges $arg): bool
+    {
+        $stmt = $this->pdo->prepare(self::updateUserAges);
+
+        $stmt->bindValue(1, $arg->age, PDO::PARAM_INT);
+        $stmt->bindValue(2, $arg->id, PDO::PARAM_INT);
+
+        return $stmt->execute();
+    }
 }
 
 readonly class CreateUserParam
@@ -56,6 +73,16 @@ readonly class CreateUserParam
         public string $name,
         public string $email,
         public int    $age,
+    )
+    {
+    }
+}
+
+readonly class updateUserAges
+{
+    function __construct(
+        public int $age,
+        public int $id,
     )
     {
     }

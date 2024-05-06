@@ -2,6 +2,7 @@
 
 use Isanasan\SqlcGenPhpPlayground\CreateUserParam;
 use Isanasan\SqlcGenPhpPlayground\Querier;
+use Isanasan\SqlcGenPhpPlayground\updateUserAges;
 use Isanasan\SqlcGenPhpPlayground\User;
 use PHPUnit\Framework\TestCase;
 
@@ -75,5 +76,24 @@ class QuerierTest extends TestCase
         $pdo = new PDO($dsn, $username, $password, $options);
 
         $pdo->exec('TRUNCATE users');
+    }
+    public function testUpdateUserAgesSuccess()
+    {
+        $userParam = new CreateUserParam(
+            "test update user",
+            "test_update@example.com",
+            30
+        );
+        $user = $this->querier->createUser($userParam);
+
+        // Update the user age
+        $updateUserAges = new updateUserAges(35, $user->id);
+        $success = $this->querier->updateUserAges($updateUserAges);
+
+        $this->assertTrue($success);
+
+        // Fetch the updated user and assert the age is update
+        $updatedUser = $this->querier->getUser($user->id);
+        $this->assertEquals(35, $updatedUser->age);
     }
 }
